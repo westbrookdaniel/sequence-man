@@ -1,18 +1,24 @@
 {
   "private": true,
   "workspaces": [
-    "apps/*",
+    "docs",
     "packages/*"
   ],
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
+    "dev": "turbo run dev --parallel --continue",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "test": "turbo run test",
+    "coverage": "turbo run coverage",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "turbo run build --filter=docs^... && changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.22.0",
     "eslint": "^7.32.0",
-    "eslint-config-custom": "*",
+    "eslint-config": "*",
     "prettier": "^2.5.1",
     "turbo": "latest"
   }

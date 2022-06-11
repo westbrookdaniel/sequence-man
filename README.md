@@ -1,6 +1,6 @@
 # sequence-man
 
-A package for sequencing react renders
+A tool for sequencing react renders
 
 ```sh
 yarn add sequence-man

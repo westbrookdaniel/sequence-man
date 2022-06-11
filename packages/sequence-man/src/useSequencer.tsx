@@ -107,7 +107,7 @@ export function usePause() {
   return { play, paused };
 }
 
-export function useManager(config: Config) {
+export function useSequencer(config: Config) {
   const setConfig = useStore((s) => s.setConfig);
   const next = useStore((s) => s.next);
   const view = useStore((s) => s.view);
@@ -119,8 +119,8 @@ export function useManager(config: Config) {
   return { view, next };
 }
 
-export function useFrameManager(config: Config) {
-  const { view, next } = useManager(config);
+export function useFrameSequencer(config: Config) {
+  const { view, next } = useSequencer(config);
 
   React.useEffect(() => {
     function frame() {

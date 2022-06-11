@@ -1,5 +1,5 @@
 import * as React from "react";
-import { repeat, useFrameManager, animate, Animate } from "sequence-man";
+import { repeat, useFrameSequencer, animate, Animate } from "sequence-man";
 
 function Square({ className = "", ...props }: React.HTMLProps<HTMLDivElement>) {
   return (
@@ -94,7 +94,7 @@ function* red() {
 }
 
 export default function Shapes() {
-  const { view } = useFrameManager({
+  const { view } = useFrameSequencer({
     scenes: [race, move, fadeOut, race, move, red],
   });
 

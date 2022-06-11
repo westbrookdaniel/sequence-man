@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useSpring, animated, UseSpringProps } from "@react-spring/web";
-import { usePause } from "./useManager";
+import { usePause } from "./useSequencer";
 
 export interface AnimatableProps {
   style: React.CSSProperties;

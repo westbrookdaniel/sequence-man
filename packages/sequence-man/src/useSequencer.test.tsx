@@ -20,7 +20,7 @@ function* scene2() {
   yield* scene1();
 }
 
-describe("useManager", () => {
+describe("useSequencer", () => {
   test("can run and swap scenes", async () => {
     const { result } = renderHook(() =>
       useSequencer({ scenes: [scene1, scene2] })
@@ -128,7 +128,9 @@ describe("useManager", () => {
 
 describe("useFrameManager", () => {
   test("should run every frame", async () => {
-    const { result } = renderHook(() => useFrameSequencer({ scenes: [scene1] }));
+    const { result } = renderHook(() =>
+      useFrameSequencer({ scenes: [scene1] })
+    );
     const { rerender } = render(result.current.view);
     expect(screen.getByText("First")).toBeInTheDocument();
     expect(raf).toHaveBeenCalled();

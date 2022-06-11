@@ -1,4 +1,4 @@
-import { repeat, useFrameManager } from "sequence-man";
+import { repeat, useFrameSequencer } from "sequence-man";
 
 interface WithChildren {
   children?: React.ReactNode;
@@ -51,7 +51,7 @@ function* deleting() {
 }
 
 export default function Typing() {
-  const { view } = useFrameManager({
+  const { view } = useFrameSequencer({
     scenes: [typing, blink, deleting],
     shouldLoop: true,
   });

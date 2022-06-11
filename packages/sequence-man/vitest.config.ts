@@ -10,6 +10,8 @@ export default defineConfig({
     coverage: {
       all: true,
       src: ["src"],
+      // Require 100% test coverage
+      "100": true,
     },
   },
 });

@@ -22,10 +22,10 @@ function Logo({
   );
 }
 
-const logoType = "Daniel Westbrook";
+const textContent = "Hello World";
 
 function* typing() {
-  const message = logoType;
+  const message = textContent;
   let str = "";
   while (str.length !== message.length) {
     str += message[str.length];
@@ -35,14 +35,14 @@ function* typing() {
 
 function* blink() {
   for (let i = 1; i <= 5; i++) {
-    yield* repeat(45, <Logo>{logoType}</Logo>);
-    yield* repeat(45, <Logo withoutBox>{logoType}</Logo>);
+    yield* repeat(45, <Logo>{textContent}</Logo>);
+    yield* repeat(45, <Logo withoutBox>{textContent}</Logo>);
   }
-  yield* repeat(45, <Logo>{logoType}</Logo>);
+  yield* repeat(45, <Logo>{textContent}</Logo>);
 }
 
 function* deleting() {
-  let str = logoType;
+  let str = textContent;
   while (str.length > 0) {
     str = str.split("").slice(0, -1).join("");
     yield* repeat(6, <Logo>{str}</Logo>);

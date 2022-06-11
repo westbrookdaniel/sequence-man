@@ -9,6 +9,7 @@ export default defineConfig({
     environment: "happy-dom",
     coverage: {
       all: true,
+      src: ["src"],
     },
   },
 });

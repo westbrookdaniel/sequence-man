@@ -30,21 +30,20 @@ const useStore = create<Store>((set) => ({
   paused: false,
   shouldLoop: false,
   setConfig: (config: Config) => {
-    const scenes = config.scenes ?? [];
-    const shouldLoop = config.shouldLoop ?? false;
+    const { scenes, shouldLoop } = config;
     set((s) => {
       const currentScene = scenes[0]?.();
       if (s.currentScene || !currentScene) {
         return {
           scenes,
-          shouldLoop,
+          shouldLoop: shouldLoop || false,
           currentScene: s.currentScene,
           view: s.view,
         };
       } else {
         return {
           scenes,
-          shouldLoop,
+          shouldLoop: shouldLoop || false,
           currentScene,
           view: currentScene.next().value ?? s.view,
         };

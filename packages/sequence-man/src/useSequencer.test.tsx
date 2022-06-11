@@ -19,6 +19,7 @@ function* scene2() {
   yield <div>Third</div>;
   yield* scene1();
 }
+function* empty() {}
 
 describe("useSequencer", () => {
   test("can run and swap scenes", async () => {
@@ -99,6 +100,32 @@ describe("useSequencer", () => {
     act(() => result.current.next());
     rerender(result.current.view);
     expect(asFragment()).toMatchInlineSnapshot("<DocumentFragment />");
+  });
+
+  test("handle empty scene", async () => {
+    const { result } = renderHook(() => useSequencer({ scenes: [empty] }));
+
+    const { asFragment, rerender } = render(result.current.view);
+    expect(asFragment()).toMatchInlineSnapshot("<DocumentFragment />");
+
+    act(() => result.current.next());
+    rerender(result.current.view);
+    expect(asFragment()).toMatchInlineSnapshot("<DocumentFragment />");
+  });
+
+  test("handle moving to empty scene", async () => {
+    const { result } = renderHook(() =>
+      useSequencer({ scenes: [scene1, empty] })
+    );
+
+    act(() => result.current.next());
+    act(() => result.current.next());
+    const { rerender } = render(result.current.view);
+    expect(screen.getByText("Second")).toBeInTheDocument();
+
+    act(() => result.current.next());
+    rerender(result.current.view);
+    expect(screen.getByText("Second")).toBeInTheDocument();
   });
 
   test("handle being paused", async () => {

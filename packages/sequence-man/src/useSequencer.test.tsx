@@ -126,7 +126,7 @@ describe("useSequencer", () => {
   });
 });
 
-describe("useFrameManager", () => {
+describe("useFrameSequencer", () => {
   test("should run every frame", async () => {
     const { result } = renderHook(() =>
       useFrameSequencer({ scenes: [scene1] })

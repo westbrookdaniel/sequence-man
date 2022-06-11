@@ -1,4 +1,4 @@
 module.exports = {
   root: true,
-  extends: ["eslint-config-acme"],
+  extends: ["eslint-config-seq"],
 };
